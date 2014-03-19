@@ -154,3 +154,15 @@ alias srdmt='spring rake db:migrate db:test:prepare'
 alias sp='sprintly'
 # spb = sprintly branch - create a branch automatically based on the bug you're working on
 alias spb="git checkout -b \`sp | tail -2 | grep '#' | sed 's/^ //' | sed 's/[^A-Za-z0-9 ]//g' | sed 's/ /-/g' | cut -d"-" -f1,2,3,4,5\`"
+
+PATH=$PATH:$HOME/.lein/bin:/usr/local/bin
+SCALA_HOME=~/bin/scala-2.10.3/bin
+CODE_HOME=~/Documents/Code
+
+export MONGO_PATH=/usr/local/mongodb
+export PATH=$PATH:$MONGO_PATH/bin
+export PATH=$PATH:$SCALA_HOME
+
+alias code="cd $CODE_HOME"
+
+
