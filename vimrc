@@ -107,4 +107,4 @@ so ~/.yadr/vim/settings.vim
 
 " ================ Joey sets the font =================
 set guifont=Inconsolata\ XL:h13
-
+set shell=/bin/bash
