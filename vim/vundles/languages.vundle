@@ -1,4 +1,6 @@
-Bundle "briancollins/vim-jst"
+Bundle "jelera/vim-javascript-syntax"
+Bundle "moll/vim-node"
+Bundle "walm/jshint.vim"
 Bundle "pangloss/vim-javascript"
 Bundle "rodjek/vim-puppet"
 Bundle "othree/javascript-libraries-syntax.vim"

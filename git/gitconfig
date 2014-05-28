@@ -45,6 +45,9 @@
   dc = diff --cached                # diff staged changes
   last = diff HEAD^                 # diff last committed change
 
+  # hist
+  hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+
   # log
   l = log --graph --date=short
   changes = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\" --name-status
@@ -125,3 +128,8 @@
   enabled = true
 [include]
   path = .gitconfig.user
+[credential]
+	helper = osxkeychain
+[user]
+	name = Joey Yang
+	email = joey@joeyyang.com
