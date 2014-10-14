@@ -163,6 +163,10 @@ export MONGO_PATH=/usr/local/mongodb
 export PATH=$PATH:$MONGO_PATH/bin
 export PATH=$PATH:$SCALA_HOME
 
+# aliases 
+alias yadr="cd ~/.yadr"
+alias aliases="mvim ~/.yadr/zsh/aliases.zsh"
+alias updatealiases="touch ~/.yadr/zsh/aliases.zsh"
 alias code="cd $CODE_HOME"
-
+alias serve="sudo python -m SimpleHTTPServer 80"
 
