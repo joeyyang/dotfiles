@@ -158,10 +158,29 @@ alias spb="git checkout -b \`sp | tail -2 | grep '#' | sed 's/^ //' | sed 's/[^A
 PATH=$PATH:$HOME/.lein/bin:/usr/local/bin
 CODE_HOME=~/firebase
 export PATH=$PATH:/usr/local/bin/scala-2.9.2/bin:/usr/local/share/npm/bin
-
 export MONGO_PATH=/usr/local/mongodb
 export PATH=$PATH:$MONGO_PATH/bin
+export JAVA_HOME=$(/usr/libexec/java_home)
+export PATH=$PATH:$JAVA_PATH/bin
 
+# aliases 
+alias yadr="cd ~/.yadr"
+alias aliases="mvim ~/.yadr/zsh/aliases.zsh"
+alias updatealiases="touch ~/.yadr/zsh/aliases.zsh"
 alias code="cd $CODE_HOME"
+alias website="cd $CODE_HOME/firebase-website/"
+alias frontend="website"                        # alias for website
+alias backend="cd $CODE_HOME/firebase-admin/"
+alias startfirebaseserver="java -jar /Users/joey/firebase/firebase-server/firebase-server/deployable/target/dependency/firebase-server-1.0.0-SNAPSHOT.jar"
+alias serve="sudo python -m SimpleHTTPServer 80"
 
+# helper function for firebase-website
+movefonts() {
+  local ICOMOON_LOCATION="/Users/joey/firebase/firebase-website/frontend/website/resources/vendor/icomoon";
+  rm -rf $ICOMOON_LOCATION/fonts;
+  cp -rf ./fonts $ICOMOON_LOCATION/fonts;
+  rm $ICOMOON_LOCATION/styles.css;
+  cp style.css $ICOMOON_LOCATION/styles.css;
+  echo "fonts in firebase-website replaced";
+}
 
