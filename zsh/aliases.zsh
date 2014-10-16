@@ -84,6 +84,7 @@ alias gb='git b'
 alias gbd='git b -D -w'
 alias gdc='git diff --cached -w'
 alias gpub='grb publish'
+alias gpom='git pull origin master' # Joey added
 alias gtr='grb track'
 alias gpl='git pull'
 alias gplr='git pull --rebase'
