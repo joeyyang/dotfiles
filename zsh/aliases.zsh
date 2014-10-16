@@ -84,6 +84,7 @@ alias gb='git b'
 alias gbd='git b -D -w'
 alias gdc='git diff --cached -w'
 alias gpub='grb publish'
+alias gpom='git pull origin master' # Joey added
 alias gtr='grb track'
 alias gpl='git pull'
 alias gplr='git pull --rebase'
@@ -166,7 +167,7 @@ export PATH=$PATH:$SCALA_HOME
 # aliases 
 alias yadr="cd ~/.yadr"
 alias aliases="mvim ~/.yadr/zsh/aliases.zsh"
-alias updatealiases="touch ~/.yadr/zsh/aliases.zsh"
+alias updatealiases="source ~/.yadr/zsh/aliases.zsh"
 alias code="cd $CODE_HOME"
 alias serve="sudo python -m SimpleHTTPServer 80"
 
