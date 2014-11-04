@@ -166,7 +166,7 @@ export PATH=$PATH:$JAVA_PATH/bin
 # aliases 
 alias yadr="cd ~/.yadr"
 alias aliases="mvim ~/.yadr/zsh/aliases.zsh"
-alias updatealiases="touch ~/.yadr/zsh/aliases.zsh"
+alias updatealiases="source ~/.yadr/zsh/aliases.zsh"
 alias code="cd $CODE_HOME"
 alias website="cd $CODE_HOME/firebase-website/"
 alias frontend="website"                        # alias for website
