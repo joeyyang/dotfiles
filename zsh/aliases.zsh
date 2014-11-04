@@ -173,6 +173,7 @@ alias frontend="website"                        # alias for website
 alias backend="cd $CODE_HOME/firebase-admin/"
 alias startfirebaseserver="java -jar /Users/joey/firebase/firebase-server/firebase-server/deployable/target/dependency/firebase-server-1.0.0-SNAPSHOT.jar"
 alias serve="sudo python -m SimpleHTTPServer 80"
+alias gpom="git pull origin master"
 
 # helper function for firebase-website
 movefonts() {
