@@ -170,4 +170,5 @@ alias aliases="mvim ~/.yadr/zsh/aliases.zsh"
 alias updatealiases="source ~/.yadr/zsh/aliases.zsh"
 alias code="cd $CODE_HOME"
 alias serve="sudo python -m SimpleHTTPServer 80"
+alias gitcleanbranches="git branch --merged | grep -v \* | xargs git branch -D"
 
