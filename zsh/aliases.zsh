@@ -84,6 +84,7 @@ alias gb='git b'
 alias gbd='git b -D -w'
 alias gdc='git diff --cached -w'
 alias gpub='grb publish'
+alias gpom='git pull origin master' # Joey added
 alias gtr='grb track'
 alias gpl='git pull'
 alias gplr='git pull --rebase'
@@ -174,6 +175,8 @@ alias backend="cd $CODE_HOME/firebase-admin/"
 alias startfirebaseserver="java -jar /Users/joey/firebase/firebase-server/firebase-server/deployable/target/dependency/firebase-server-1.0.0-SNAPSHOT.jar"
 alias serve="sudo python -m SimpleHTTPServer 80"
 alias gpom="git pull origin master"
+alias serve="sudo python -m SimpleHTTPServer 80"
+alias gitcleanbranches="git branch --merged | grep -v \* | xargs git branch -D"
 
 # helper function for firebase-website
 movefonts() {
