@@ -157,12 +157,20 @@ alias sp='sprintly'
 alias spb="git checkout -b \`sp | tail -2 | grep '#' | sed 's/^ //' | sed 's/[^A-Za-z0-9 ]//g' | sed 's/ /-/g' | cut -d"-" -f1,2,3,4,5\`"
 
 PATH=$PATH:$HOME/.lein/bin:/usr/local/bin
+PATH=$PATH:$HOME/bin
 CODE_HOME=~/firebase
-export PATH=$PATH:/usr/local/bin/scala-2.9.2/bin:/usr/local/share/npm/bin
-export MONGO_PATH=/usr/local/mongodb
-export PATH=$PATH:$MONGO_PATH/bin
-export JAVA_HOME=$(/usr/libexec/java_home)
-export PATH=$PATH:$JAVA_PATH/bin
+#export PATH=$PATH:/usr/local/bin/scala-2.9.2/bin:/usr/local/share/npm/bin
+#export MONGO_PATH=/usr/local/mongodb
+#export PATH=$PATH:$MONGO_PATH/bin
+#export JAVA_HOME=$(/usr/libexec/java_home)
+#export PATH=$PATH:$JAVA_PATH/bin
+#export PATH=$PATH:$HOME/.homebrew/bin
+#export NVM_DIR=~/.nvm
+#source $(brew --prefix nvm)/nvm.sh
+#export SCALA_HOME=/usr/local/opt/scala/idea
+#source $CODE_HOME/dev-setup/profile.sh
+
+export ANDROID_HOME=/usr/local/opt/android-sdk
 
 # aliases 
 alias yadr="cd ~/.yadr"
@@ -171,14 +179,25 @@ alias updatealiases="source ~/.yadr/zsh/aliases.zsh"
 alias code="cd $CODE_HOME"
 alias website="cd $CODE_HOME/firebase-website/"
 alias frontend="website"                        # alias for website
-alias backend="cd $CODE_HOME/firebase-admin/"
-alias startfirebaseserver="java -jar /Users/joey/firebase/firebase-server/firebase-server/deployable/target/dependency/firebase-server-1.0.0-SNAPSHOT.jar"
+alias admin="cd $CODE_HOME/firebase-admin/"
+alias auth="cd $CODE_HOME/firebase-backend-simple-login/"
+alias startfirebaseserver="java -jar $CODE_HOME/firebase-server/firebase-server/deployable/target/dependency/firebase-server-1.0.0-SNAPSHOT.jar"
 alias serve="sudo python -m SimpleHTTPServer 80"
 alias gpom="git pull origin master"
 alias serve="sudo python -m SimpleHTTPServer 80"
 alias gitcleanbranches="git branch --merged | grep -v \* | xargs git branch -D"
 
-# helper function for firebase-website
+# FIREBASE HOSTING STUFF (local)
+# export FIREBASE_ADMIN_URL=http://fblocal.com:10000
+# export FIREBASE_REALTIME_URL=http://fblocal.com:9000
+# export FIREBASE_UPLOAD_URL=http://hosting.fblocal.com:11500
+# export FIREBASE_HOSTING_URL=http://fblocalapp.com:11500
+# FIREBASE HOSTING STUFF (staging)
+# export FIREBASE_ADMIN_URL=https://staging-admin.firebase.com
+# export FIREBASE_REALTIME_URL=https://firebaseio-staging.com
+# export FIREBASE_UPLOAD_URL=https://hosting.firebaseapp-staging.com
+# export FIREBASE_HOSTING_URL=https://firebaseapp-staging.com
+
 movefonts() {
   local ICOMOON_LOCATION="/Users/joey/firebase/firebase-website/frontend/website/resources/vendor/icomoon";
   rm -rf $ICOMOON_LOCATION/fonts;
@@ -188,3 +207,20 @@ movefonts() {
   echo "fonts in firebase-website replaced";
 }
 
+# ssh into your box to make localhost work
+alias sshlocal='ssh -L 9998:localhost.corp.google.com:9998 joeyy@joeyy.sfo.corp.google.com'
+
+# refresh auth
+alias authrefresh='~/bin/auth-refresh-gtunnel.py joeyy.sfo'
+
+# get auth
+alias getauth='kinit && authrefresh'
+alias beautifulmorning='getauth && remount && sshlocal'
+alias forward='ssh -L 9990:joeyy.sfo.corp.google.com:9990 joeyy.sfo.corp.google.com -N -v'
+
+
+# replace kinit (deprecated)
+alias letsgetit='authrefresh && sshlocal'
+
+# fix $SSH_AUTH_SOCK errors
+alias killssh='ssh -O exit joeyy.sfo'

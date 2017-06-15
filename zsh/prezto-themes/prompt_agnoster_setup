@@ -59,19 +59,35 @@ prompt_context() {
   fi
 }
 
+# HACK FOR SSHFS MOUNTING ENG DESKTOP TO MAC
+# does the first argument contain the other as a string?
+starts_with() {
+    string="$1"
+    substring="$2"
+    if test "${string#*$substring}" != "$string"
+    then
+        return 0 # $substring is in $string
+    else
+        return 1 # $substring is not in $string
+    fi
+}
+
 # Git: branch/detached head, dirty status
 prompt_git() {
   local ref dirty
-  if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
-    ZSH_THEME_GIT_PROMPT_DIRTY='±'
-    dirty=$(parse_git_dirty)
-    ref=$(git symbolic-ref HEAD 2> /dev/null) || ref="➦ $(git show-ref --head -s --abbrev |head -n1 2> /dev/null)"
-    if [[ -n $dirty ]]; then
-      prompt_segment yellow black
-    else
-      prompt_segment green black
+  # HACK FOR SSHFS MOUNTING ENG DESKTOP TO MAC
+  if ! starts_with $PWD "/Users/joeyy/workstation"; then
+    if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
+      ZSH_THEME_GIT_PROMPT_DIRTY='±'
+      dirty=$(parse_git_dirty)
+      ref=$(git symbolic-ref HEAD 2> /dev/null) || ref="➦ $(git show-ref --head -s --abbrev |head -n1 2> /dev/null)"
+      if [[ -n $dirty ]]; then
+        prompt_segment yellow black
+      else
+        prompt_segment green black
+      fi
+      echo -n "${ref/refs\/heads\//⭠ }$dirty"
     fi
-    echo -n "${ref/refs\/heads\//⭠ }$dirty"
   fi
 }
 
@@ -101,14 +117,15 @@ prompt_status() {
 ### current time
 ### function added by digitalformula
 prompt_time() {
-  prompt_segment white black "`date +%H:%M:%S`"
+  prompt_segment white black "`date +%H:%M`"
 }
 
 ### current hostname
 ### function added by digitalformula
 prompt_hostname() {
   hostname=`hostname`
-  prompt_segment green black "$hostname"
+  # prompt_segment green black "$hostname"
+  prompt_segment green black "RIP Pimp C"
 }
 
 ## Main prompt (Old version, includes currect directory)
@@ -125,7 +142,7 @@ build_prompt() {
   RETVAL=$?
   prompt_status
   prompt_time
-  prompt_hostname
+  # prompt_hostname
   prompt_dir
   prompt_git
   prompt_end
